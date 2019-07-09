@@ -21,6 +21,7 @@
                             console.log(x);
                             function geoFuncHelper() {
                                 if(navigator.geolocation) {
+                                    localStorage.setItem("MyLocFlag", true);
                                     navigator.geolocation.getCurrentPosition(helper_2);
                                 }
                                 else {
@@ -33,7 +34,6 @@
                                 var long = position.coords.longitude;
                                 localStorage.setItem("Latitude", lat);
                                 localStorage.setItem("Longitude", long);
-                                localStorage.setItem("MyLocFlag", true);
                                 console.log(localStorage.getItem("Latitude"));
                                 console.log(localStorage.getItem("Longitude"));
                                 console.log(localStorage.getItem("MyLocFlag"));
@@ -51,10 +51,6 @@
                 </div>
         </header>
         <div class = "Search_City">
-            <h1 class = "test">Test: </h1>
-            <script>
-                $(".test").append(localStorage.getItem("MyLocFlag"));
-            </script>
             <h1 class = "name"></h1>
             <img class = "icon"> 
             <p class = "temperature"><strong><em>Temperature: </em></strong></p> 
@@ -66,20 +62,22 @@
             <script>
                 var url = "";
                 if(localStorage.getItem("MyLocFlag") == "true") {
+                    console.log("IF");
                     console.log("Lat: " + localStorage.getItem("Latitude"));
                     console.log("Lon: " + localStorage.getItem("Longitude"));
-                    url = "api.openweathermap.org/data/2.5/weather?lat=" + Math.floor(localStorage.getItem("Latitude")) + "&lon=" + Math.floor(localStorage.getItem("Longitude")) + "&units=imperial&appid=05233db98d2df8946deacdca987af231";
+                    url = "https://api.openweathermap.org/data/2.5/weather?lat=" + (localStorage.getItem("Latitude")) + "&lon=" + (localStorage.getItem("Longitude")) + "&units=imperial&appid=05233db98d2df8946deacdca987af231";
                     console.log("Url: " + url);
                 }
                 else if(localStorage.getItem("saved_city").charCodeAt(0) < 58) {
+                    console.log("ELSE IF");
                     url = "https://api.openweathermap.org/data/2.5/weather?zip="+localStorage.getItem("saved_city")+"&units=imperial&appid=05233db98d2df8946deacdca987af231";
                 }
                 else {
-                    console.log(localStorage.getItem("MyLocFlag"));
+                    console.log("ELSE");
                     url = "https://api.openweathermap.org/data/2.5/weather?q="+localStorage.getItem("saved_city")+"&units=imperial&appid=05233db98d2df8946deacdca987af231";
                 }
                 console.log(url);
-                $.getJSON("api.openweathermap.org/data/2.5/weather?lat=42&lon=-84&units=imperial&appid=05233db98d2df8946deacdca987af231", 
+                $.getJSON(url, 
                     function(obj) {
                         //data is the JSON string
                     console.log(obj);
