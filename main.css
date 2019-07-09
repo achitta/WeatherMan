@@ -124,7 +124,7 @@ body {
 .Paris {
     float: left;
     position: relative;
-    margin-left: 110px;
+    margin-left: 80px;
     margin-top: 50px;
     margin-bottom: 100px;
 }
@@ -132,7 +132,7 @@ body {
 .Tokyo {
     float: left;
     position: relative;
-    margin-left: 110px;
+    margin-left: 80px;
     margin-top: 50px;
     margin-bottom: 100px;
 }
@@ -244,4 +244,8 @@ nav_f a:hover::before {
 header a {
     color: black;
     text-decoration: none;
+}
+
+#geolocation {
+    float: right;
 }

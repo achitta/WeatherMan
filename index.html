@@ -15,11 +15,37 @@
             <p>Created by Aditya Chitta</p>
             <div class = "search_container">
                 <input id = "search_bar" type="text" placeholder="Search zipcode or city" name="search">
+                <button id = "geolocation" type="submit" onclick="geoFuncHelper()">Use My Location</button>
+                <script>
+                    var x = document.getElementById("geolocation");
+                    console.log(x);
+                    function geoFuncHelper() {
+                        if(navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(helper_2);
+                        }
+                        else {
+                            x.innerHTML = "Geolocation is not supported by this browser.";
+                        }
+                    };
+
+                    function helper_2(position) {
+                        var lat = position.coords.latitude;
+                        var long = position.coords.longitude;
+                        localStorage.setItem("Latitude", lat);
+                        localStorage.setItem("Longitude", long);
+                        localStorage.setItem("MyLocFlag", true);
+                        console.log(localStorage.getItem("Latitude"));
+                        console.log(localStorage.getItem("Longitude"));
+                        console.log(localStorage.getItem("MyLocFlag"));
+                        window.location.href = "search.html";
+                    };
+                </script>
                 <button type="submit" onclick="saveFunction()"><a href = "search.html">Submit</a></button>
                 <script>
                     function saveFunction(){
                         var city_search = document.getElementById("search_bar").value;
                         localStorage.setItem("saved_city", city_search);
+                        localStorage.setItem("MyLocFlag", false);
                     };
                 </script>
             </div>
@@ -28,7 +54,7 @@
             <h1 id = "page_name">The Weather Man</h1>
             <p id = "page_description">Welcome to The Weather Man! I developed this website to better understand what exactly APIs are and how to
                 interact with them. In building this site, I combined the use of Open Weather Map's API (to get weather data for locations), 
-                Google Map's API (to show weather of user's current location), and World Time API (to get current time for different locations)
+                HTML's Geolocation Functionality (to show weather of user's current location), and World Time API (to get current time for different locations)
                 . Enjoy and go to the <a href = "#">Contact Us</a> page if you have any feedback!
             </p>
             <div class = "Cities"> 
@@ -65,6 +91,7 @@
                 </div>
                 <div class = "NewYork">
                         <h2>New York, NY</h2>
+                        <p class = "test"></p>
                         <img class = "nyc_icon"> 
                         <p class = "nyc_temperature"><strong><em>Temperature: </em></strong></p> 
                         <p class = "nyc_weather"><strong><em>Weather: </em></strong></p> 
@@ -72,7 +99,7 @@
                         <p class = "nyc_time"><strong><em>Time: </em></strong> </p>
                         <script>
                             var city = "New York";
-                            $.getJSON("https://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&appid=05233db98d2df8946deacdca987af231", 
+                            $.getJSON("https://api.openweathermap.org/data/2.5/weather?q="+city+"&units=imperial&appid=05233db98d2df8946deacdca987af231",
                             function(obj) {
                                 //data is the JSON string
                             console.log(obj);
@@ -316,11 +343,11 @@
             <div class = "container_f">
                 <nav_f>
                     <ul>
-                        <li><a href = "http://www.facebook.com">Facebook</a></li>
+                        <li><a href = "https://www.facebook.com/profile.php?id=100007034298099">Facebook</a></li>
                         <li><a href = "http://www.twitter.com">Twitter</a></li>
-                        <li><a href = "http://www.instagram.com">Instagram</a></li>
+                        <li><a href = "https://www.instagram.com/aditya.chitta/">Instagram</a></li>
                         <li><a href = "http://www.linkedin.com/in/aditya-chitta">LinkedIn</a></li>
-                        <li><a href = "http://www.github.com">GitHub</a></li>
+                        <li><a href = "https://github.com/achitta">GitHub</a></li>
                     </ul>
                 </nav_f>
             </div>
