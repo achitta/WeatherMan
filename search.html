@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="test.js"></script>
+        <link rel="stylesheet" href="search.css">
+        <title>Search Aditya's Weather App</title>
+    </head>
+    <body>
+        <header>
+            <div class = "logo"><img src = "weather-icons-collection_1167-124.jpg" alt = "logo" class = "logo"/></div>
+            <h1><a href = "index.html">The Weather Man</a></h1>
+            <p>Created by Aditya Chitta</p>
+            <div class = "search_container">
+                    <input id = "search_bar" type="text" placeholder="Search zipcode or city" name="search">
+                    <button type="submit" onclick="saveFunction()"><a href = "search.html">Submit</a></button>
+                    <script>
+                        function saveFunction(){
+                            var city_search = document.getElementById("search_bar").value;
+                            localStorage.setItem("saved_city", city_search);
+                        };
+                    </script>
+                </div>
+        </header>
+        <div class = "Search_City">
+            <h1 class = "name"></h1>
+            <img class = "icon"> 
+            <p class = "temperature"><strong><em>Temperature: </em></strong></p> 
+            <p class = "Low"><strong><em>Low: </em></strong></p>
+            <p class = "High"><strong><em>High: </em></strong></p>
+            <p class = "weather"><strong><em>Weather: </em></strong> </p> 
+            <p class = "description"><strong><em>Description: </em></strong></p>
+            <p class = "WindSpeed"><strong><em>WindSpeed: </em></strong></p>
+            <script>
+                $.getJSON("https://api.openweathermap.org/data/2.5/weather?q="+localStorage.getItem("saved_city")+"&units=imperial&appid=05233db98d2df8946deacdca987af231", 
+                    function(obj) {
+                        //data is the JSON string
+                    console.log(obj);
+                    var temp = Math.floor(obj.main.temp);
+                    var icon = "http://openweathermap.org/img/w/"+obj.weather[0].icon + ".png";
+                    var weather = obj.weather[0].main;
+                    var description = obj.weather[0].description;
+                    var Low = Math.floor(obj.main.temp_min);
+                    var High = Math.floor(obj.main.temp_max);
+                    var WindSpeed = Math.floor(obj.wind.speed);
+                    var direction_angle = Math.floor(obj.wind.deg);
+                    var direction_str = "";
+                    if(direction_angle < 15) {
+                        direction_str = "N";
+                    }
+                    else if(direction_angle < 75) {
+                        direction_str = "NE";
+                    }
+                    else if(direction_angle < 105) {
+                        direction_str = "E";
+                    }
+                    else if(direction_angle < 165) {
+                        direction_str = "SE";
+                    }
+                    else if(direction_angle < 195) {
+                        direction_str = "S";
+                    }
+                    else if(direction_angle < 255) {
+                        direction_str = "SW";
+                    }
+                    else if(direction_angle < 285) {
+                        direction_str = "W";
+                    }
+                    else if(direction_angle < 345) {
+                        direction_str = "NW";
+                    }
+                    else {
+                        direction_str = "N";
+                    }
+                    
+                    $(".name").append(localStorage.getItem("saved_city"));
+                    $(".icon").attr("src",icon);
+                    $(".temperature").append(temp + " degrees F");
+                    $(".Low").append(Low + " degrees F");
+                    $(".High").append(High + " degrees F");
+                    $(".weather").append(weather);
+                    $(".description").append(description);
+                    $(".WindSpeed").append(WindSpeed + " " + direction_str);
+                    });
+            </script>
+        </div>
+    </body>
+</html>

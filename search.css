@@ -1,0 +1,85 @@
+header {
+    background: rgb(5, 219, 120);
+    margin: 0 auto;
+    width: 100%;
+    top:0;
+    width:100%;
+}
+
+.logo {
+    width: 130px;
+    height: 130px;
+    float: left;
+}
+
+header h1 {
+    text-align: center;
+    /* color: blue; */
+    color: black;
+    margin-top: 10px;
+}
+
+header p {
+    text-align: center;
+    /* color: white; */
+    color: black;
+    margin-top: 10px;
+}
+
+header::after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+header .search_container {
+    float: right;
+}
+  
+header input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+  
+header .search_container button {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+  
+header .search_container button:hover {
+    background: #ccc;
+}
+
+body {
+    margin: 0px;
+    background: #444;
+    font-family: "Montserrat", san-serif;
+    font-weight: 400;
+    color: white;
+}
+
+.Search_City{
+    text-align: center;
+}
+
+.Search_City h1 {
+    font-size: 40px;
+    color: lightblue;
+}
+
+.Search_City p {
+    font-size: 20px;
+}
+
+header a {
+    color: black;
+    text-decoration: none;
+}
