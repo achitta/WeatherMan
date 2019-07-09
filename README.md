@@ -1,0 +1,2 @@
+# WeatherMan
+Welcome to The Weather Man! I developed this web application to better understand what exactly APIs are and how to interact with them. In building this site, I combined the use of Open Weather Map's API (to get weather data for locations), Google Map's API (to show weather of user's current location), and World Time API (to get current time for different locations). This site is coded using JavaScript, JQuery, HTML, and CSS. Enjoy!
