@@ -1,0 +1,242 @@
+header {
+    background: rgb(5, 219, 120);
+    margin: 0 auto;
+    width: 100%;
+    top:0;
+    width:100%;
+}
+
+.logo {
+    width: 130px;
+    height: 130px;
+    float: left;
+}
+
+header h1 {
+    text-align: center;
+    /* color: blue; */
+    color: black;
+    margin-top: 10px;
+}
+
+header p {
+    text-align: center;
+    /* color: white; */
+    color: black;
+    margin-top: 10px;
+}
+
+header::after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+header .search_container {
+    float: right;
+}
+  
+header input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+  
+header .search_container button {
+    float: right;
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+  
+header .search_container button:hover {
+    background: #ccc;
+}
+
+body {
+    margin: 0px;
+    background: #444;
+    font-family: "Montserrat", san-serif;
+    font-weight: 400;
+    color: white;
+}
+
+.Homepage_Text {
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#page_description {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+#page_name {
+    margin-bottom: 0px;
+    font-size: 40px;
+    color: yellow;
+}
+
+.Novi {
+    float: left;
+    position: relative;   
+}
+
+.NewYork {
+    float: left;
+    position: relative;
+    margin-left: 90px;
+}
+
+.LA {
+    float: left;
+    position: relative;
+    margin-left: 90px;
+}
+
+.Chicago {
+    float: left;
+    position: relative;
+    margin-left: 90px;
+}
+
+.Detroit {
+    float: left;
+    position: relative;
+    margin-left: 90px;
+    margin-right: 100px;
+}
+
+.London {
+    float: left;
+    position: relative;
+    margin-left: 150px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.Paris {
+    float: left;
+    position: relative;
+    margin-left: 110px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.Tokyo {
+    float: left;
+    position: relative;
+    margin-left: 110px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.Melbourne {
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 150px;
+    margin-bottom: 100px;
+}
+
+.Searching {
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 150px;
+    margin-bottom: 100px;
+}
+
+.Homepage_Text h2 {
+    color: lightblue;
+}
+
+#page_description a {
+    color:lawngreen;
+}
+
+.Cities p{
+    font-size: 16px;
+}
+
+.container_f {
+    margin-top: 150px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.container_f h1 {
+    font-size: 16px;
+    font-weight: 400;
+    float: left;
+}
+
+footer {
+    margin-top: 100px;
+    background: #444;
+/*    position: fixed;  */
+    justify-content: center;
+    bottom: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+
+footer::after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+nav_f {
+    float: left;
+}
+
+nav_f ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    margin-left: 150px;
+}
+
+nav_f li {
+    display: inline-block;
+    margin-left: 70px;
+    padding-bottom: 100px;
+    font-size: 16px;
+    position: relative;
+}
+
+nav_f a {
+    color: #55d6aa;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav_f a:hover {
+    color: rgb(5, 219, 120);
+}
+
+nav_f a::before {
+    content: ' ';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: #444;
+    position: absolute;
+    bottom: 5px;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+
+nav_f a:hover::before {
+    width: 100%;
+}
