@@ -14,12 +14,14 @@ header {
 
 header h1 {
     text-align: center;
+    margin-right: 150px;
     /* color: blue; */
     color: black;
     margin-top: 10px;
 }
 
 header p {
+    margin-right: 150px;
     text-align: center;
     /* color: white; */
     color: black;
