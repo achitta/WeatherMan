@@ -139,16 +139,46 @@
                             var tens = hours_str.charCodeAt(0) - 48;
                             var ones = hours_str.charCodeAt(1) - 48;
                             var hours_num = 10*tens + ones;
-                            var curr_hours_num = hours_num + (localStorage.getItem("time_offset")/3600);
+                            var min_ten = hours_str.charCodeAt(3) - 48;
+                            var min_one = hours_str.charCodeAt(4) - 48;
+                            var mins_num = 10*min_ten + min_one;
                             
+                            var local_time_offset = localStorage.getItem("time_offset")/3600;
+                        
+                            //Negative Number
+                            var hours_offset;
+                            if(local_time_offset < 0) {
+                                hours_offset = Math.ceil(local_time_offset);
+                            }
+                            else {
+                                hours_offset = Math.floor(local_time_offset);
+                            }
+                            var mins_offset = (local_time_offset - hours_offset) * 60;
+                            var curr_min_num = mins_num + mins_offset;
+                            var curr_hours_num = hours_num + hours_offset;
+                            if(curr_min_num >= 60){
+                                curr_hours_num = curr_hours_num+1;
+                                curr_min_num = curr_min_num - 60;
+                            }
+                            else if(curr_min_num < 0) {
+                                curr_hours_num = curr_hours_num-1;
+                                curr_min_num = curr_min_num + 60;
+                            }
                             while(curr_hours_num <= 0) {
                                 curr_hours_num = curr_hours_num + 12;
                             }
                             while(curr_hours_num > 12) {
                                 curr_hours_num = curr_hours_num - 12;
                             }
-                            console.log("Current Hours: " + curr_hours_num);
-                            $(".time").append(curr_hours_num + time_obj.datetime.substring(13,16));
+                            var curr_hours_num_str = curr_hours_num.toString();
+                            var curr_mins_num_str = curr_min_num.toString();
+                            if(curr_hours_num < 10) {
+                                curr_hours_num_str = "0" + (curr_hours_num.toString());
+                            }
+                            if(curr_min_num < 10) {
+                                curr_mins_num_str = "0" + (curr_min_num.toString());
+                            }
+                            $(".time").append(curr_hours_num_str + ":" + curr_mins_num_str);
                     });
             </script>
         </div>
