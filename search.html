@@ -139,6 +139,10 @@
                             var tens = hours_str.charCodeAt(0) - 48;
                             var ones = hours_str.charCodeAt(1) - 48;
                             var hours_num = 10*tens + ones;
+                            var am_flag = true;
+                            if(hours_num >= 12) {
+                                am_flag = false;
+                            }
                             var min_ten = hours_str.charCodeAt(3) - 48;
                             var min_one = hours_str.charCodeAt(4) - 48;
                             var mins_num = 10*min_ten + min_one;
@@ -179,6 +183,12 @@
                                 curr_mins_num_str = "0" + (curr_min_num.toString());
                             }
                             $(".time").append(curr_hours_num_str + ":" + curr_mins_num_str);
+                            if(am_flag) {
+                                $(".time").append(" AM");
+                            }
+                            else {
+                                $(".time").append(" PM");
+                            }
                     });
             </script>
         </div>
